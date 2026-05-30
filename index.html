@@ -79,14 +79,10 @@
 }
 
 /* ══════════════════════════════════════════
-   TRANSITIONS — dark/light sur tous les éléments
+   TRANSITIONS — dark/light smooth
 ══════════════════════════════════════════ */
-*, *::before, *::after {
-  transition: background-color .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease;
-}
-/* Exclure les transitions sur les animations et transforms */
-*[class*="tag-dot"], *[class*="typing"], *[class*="leaflet"] {
-  transition: none !important;
+body, nav, section, div, button, input, textarea, select, a, p, h1, h2, h3, span, footer, header {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease !important;
 }
 
 html{scroll-behavior:smooth}
@@ -123,18 +119,12 @@ nav{
 
 /* DARK TOGGLE */
 .theme-toggle{
-  width:38px;height:22px;border-radius:11px;
-  background:var(--bg3);border:1px solid var(--border2);
-  cursor:pointer;position:relative;transition:all .3s;flex-shrink:0;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--gold-light);border:1.5px solid var(--gold-border2);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:all .2s;flex-shrink:0;
 }
-.theme-toggle::after{
-  content:'';position:absolute;top:2px;left:2px;
-  width:16px;height:16px;border-radius:50%;
-  background:var(--gold);transition:transform .3s;
-}
-[data-theme="dark"] .theme-toggle::after{transform:translateX(16px)}
-[data-theme="dark"] .theme-toggle{background:var(--bg3)}
-.theme-icon{font-size:11px;line-height:22px;text-align:center;display:block;opacity:.6}
+.theme-toggle:hover{background:var(--gold-light);transform:scale(1.1)}
 
 .nav-cta{
   background:var(--gold);color:var(--bg);border:none;
@@ -444,17 +434,8 @@ footer ul a:hover{color:var(--gold)}
 [contenteditable]{outline:1px dashed var(--gold-border);outline-offset:2px;cursor:text}
 [contenteditable]:focus{outline:1px solid var(--gold)}
 </style>
-<!-- Script thème inline — s'exécute AVANT le rendu pour éviter le flash -->
-<script>
-(function(){
-  var saved = localStorage.getItem('anb-theme');
-  if(saved === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-  }
-})();
-</script>
+<!-- Anti-flash thème -->
+<script>try{var t=localStorage.getItem('anb-theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
 <body>
 
@@ -484,7 +465,9 @@ footer ul a:hover{color:var(--gold)}
       <button class="lang-btn" onclick="setLang('en',this)">EN</button>
     </div>
     <!-- Toggle dark/light -->
-    <button class="theme-toggle" onclick="toggleTheme()" title="Changer de thème" id="themeBtn"></button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Mode sombre / clair" id="themeBtn">
+  <span id="themeIcon">☀️</span>
+</button>
     <!-- CTA -->
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
       <span data-i18n="nav.contact">Contacto</span>
@@ -763,19 +746,71 @@ footer ul a:hover{color:var(--gold)}
 // ══════════════════════════════════════════
 // DARK / LIGHT TOGGLE
 // ══════════════════════════════════════════
-function toggleTheme(){
-  const html = document.documentElement;
-  const isDark = html.getAttribute('data-theme') === 'dark';
-  const newTheme = isDark ? 'light' : 'dark';
-  html.setAttribute('data-theme', newTheme);
-  localStorage.setItem('anb-theme', newTheme);
-  // Changer les tuiles Leaflet
-  if(typeof updateMapTiles === 'function') updateMapTiles(newTheme);
-  // Forcer le repaint sur le body
-  document.body.style.display = 'none';
-  document.body.offsetHeight; // force reflow
-  document.body.style.display = '';
+// Couleurs par thème
+const THEME_COLORS = {
+  light: {
+    bg:'#F6F3EE', bg2:'#EDEAE3', bg3:'#E4E0D7',
+    navBg:'rgba(246,243,238,.96)', cardBg:'#FFFFFF', cardHover:'#F9F7F3',
+    gold:'#8B6914', goldLight:'rgba(139,105,20,.1)', goldBorder:'rgba(139,105,20,.22)', goldBorder2:'rgba(139,105,20,.38)',
+    text:'#1A1510', muted:'#7A6E5F', border:'rgba(26,21,16,.08)', border2:'rgba(139,105,20,.18)',
+    shadow:'rgba(26,21,16,.08)', heroStatBg:'#FFFFFF', tagBg:'rgba(139,105,20,.07)',
+    inputBg:'#FFFFFF', pillOkBg:'rgba(22,153,100,.07)', pillOkColor:'#169964', pillOkBorder:'rgba(22,153,100,.2)',
+    pillSoonBg:'rgba(139,105,20,.06)', mkActive:'#8B6914', mkGlow:'rgba(139,105,20,.18)',
+  },
+  dark: {
+    bg:'#0A1628', bg2:'#0F1D35', bg3:'#162040',
+    navBg:'rgba(10,22,40,.96)', cardBg:'#111E38', cardHover:'#162040',
+    gold:'#C9A84C', goldLight:'rgba(201,168,76,.08)', goldBorder:'rgba(201,168,76,.16)', goldBorder2:'rgba(201,168,76,.34)',
+    text:'#FDFCFA', muted:'rgba(253,252,250,.42)', border:'rgba(201,168,76,.1)', border2:'rgba(201,168,76,.22)',
+    shadow:'rgba(0,0,0,.3)', heroStatBg:'#111E38', tagBg:'rgba(201,168,76,.06)',
+    inputBg:'#111E38', pillOkBg:'rgba(30,186,140,.07)', pillOkColor:'#1EBA8C', pillOkBorder:'rgba(30,186,140,.2)',
+    pillSoonBg:'rgba(201,168,76,.05)', mkActive:'#C9A84C', mkGlow:'rgba(201,168,76,.18)',
+  }
+};
+
+function applyTheme(theme) {
+  const root = document.documentElement;
+  const c = THEME_COLORS[theme];
+  if(!c) return;
+  
+  // Appliquer data-theme pour les sélecteurs CSS
+  root.setAttribute('data-theme', theme);
+  
+  // Forcer toutes les CSS vars directement sur :root via style
+  const vars = [
+    ['--bg', c.bg], ['--bg2', c.bg2], ['--bg3', c.bg3],
+    ['--nav-bg', c.navBg], ['--card-bg', c.cardBg], ['--card-hover', c.cardHover],
+    ['--gold', c.gold], ['--gold-light', c.goldLight], ['--gold-border', c.goldBorder], ['--gold-border2', c.goldBorder2],
+    ['--text', c.text], ['--muted', c.muted], ['--border', c.border], ['--border2', c.border2],
+    ['--shadow', c.shadow], ['--hero-stat-bg', c.heroStatBg], ['--tag-bg', c.tagBg],
+    ['--input-bg', c.inputBg], ['--pill-ok-bg', c.pillOkBg], ['--pill-ok-color', c.pillOkColor],
+    ['--pill-ok-border', c.pillOkBorder], ['--pill-soon-bg', c.pillSoonBg],
+    ['--mk-active', c.mkActive], ['--mk-glow', c.mkGlow],
+  ];
+  vars.forEach(([k,v]) => root.style.setProperty(k, v));
+  
+  // Icône
+  const icon = document.getElementById('themeIcon');
+  if(icon) icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+  
+  // Sauvegarder
+  try { localStorage.setItem('anb-theme', theme); } catch(e) {}
+  
+  // Carte Leaflet
+  if(typeof updateMapTiles === 'function') updateMapTiles(theme);
 }
+
+function toggleTheme(){
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+// Init au chargement
+(function(){
+  let saved = 'light';
+  try { saved = localStorage.getItem('anb-theme') || 'light'; } catch(e) {}
+  applyTheme(saved);
+})();
 // Thème déjà initialisé dans <head> — rien à faire ici
 
 // ══════════════════════════════════════════
