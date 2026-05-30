@@ -1023,26 +1023,47 @@ const CITIES = {
   az:{name:'Azua', lat:18.4547, lng:-70.7340, active:false, capital:false, note:'Provincia Azua · Suroeste', air:'5–6 días vía SDQ', sea:'20–24 días'},
 };
 
-// Forcer la hauteur du conteneur carte avant init Leaflet
-document.getElementById('map').style.height = '560px';
-document.getElementById('map').style.minHeight = '560px';
-
-const map = L.map('map', {center:[18.85,-70.15], zoom:8, minZoom:6, maxZoom:16});
-
-let tileLayer;
+// Init carte après chargement complet du DOM
+let map, tileLayer;
 const TILES = {
   dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
   light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
 };
 const ATTR = '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OSM</a>';
 
+function initMap() {
+  const el = document.getElementById('map');
+  if(!el || map) return;
+  el.style.height = '560px';
+  el.style.width = '100%';
+  el.style.display = 'block';
+  
+  map = L.map('map', {center:[18.85,-70.15], zoom:8, minZoom:6, maxZoom:16});
+  const theme = document.documentElement.getAttribute('data-theme') || 'light';
+  updateMapTiles(theme);
+  
+  // Markers
+  Object.entries(CITIES).forEach(([id, c]) => {
+    const cls = c.capital ? 'mk-capital' : c.active ? 'mk-active' : 'mk-soon';
+    const sz = c.capital ? 20 : c.active ? 16 : 12;
+    const icon = L.divIcon({className:'', html:`<div class="${cls}"></div>`, iconSize:[sz,sz], iconAnchor:[sz/2,sz/2]});
+    const m = L.marker([c.lat, c.lng], {icon}).addTo(map);
+    m.bindPopup(popHTML(id,c), {maxWidth:280, className:'', closeButton:true});
+    m.on('click', () => selectCity(id));
+    markers[id] = m;
+  });
+  
+  setTimeout(() => map.invalidateSize(), 300);
+}
+
 function updateMapTiles(theme){
+  if(!map) return;
   if(tileLayer) map.removeLayer(tileLayer);
   tileLayer = L.tileLayer(TILES[theme] || TILES.light, {attribution:ATTR, subdomains:'abcd', maxZoom:19});
   tileLayer.addTo(map);
 }
-const initTheme = document.documentElement.getAttribute('data-theme') || 'light';
-updateMapTiles(initTheme);
+
+window.addEventListener('load', initMap);
 
 const markers = {};
 function popHTML(id, c){
@@ -1056,15 +1077,7 @@ function popHTML(id, c){
   </div>`;
 }
 
-Object.entries(CITIES).forEach(([id, c]) => {
-  const cls = c.capital ? 'mk-capital' : c.active ? 'mk-active' : 'mk-soon';
-  const sz = c.capital ? 20 : c.active ? 16 : 12;
-  const icon = L.divIcon({className:'', html:`<div class="${cls}"></div>`, iconSize:[sz,sz], iconAnchor:[sz/2,sz/2]});
-  const m = L.marker([c.lat, c.lng], {icon}).addTo(map);
-  m.bindPopup(popHTML(id,c), {maxWidth:280, className:'', closeButton:true});
-  m.on('click', () => selectCity(id));
-  markers[id] = m;
-});
+// markers initialisés dans initMap()
 
 function selectCity(id){
   document.querySelectorAll('.city-btn').forEach(b => b.classList.toggle('sel', b.dataset.id===id));
@@ -1074,14 +1087,7 @@ function selectCity(id){
 }
 document.querySelectorAll('.city-btn').forEach(b => b.addEventListener('click', () => selectCity(b.dataset.id)));
 
-// Forcer Leaflet à recalculer la taille après rendu complet
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    if(map) {
-      map.invalidateSize();
-    }
-  }, 300);
-});
+
 
 // ══════════════════════════════════════════
 // AI CHAT
