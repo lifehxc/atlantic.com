@@ -119,12 +119,17 @@ nav{
 
 /* DARK TOGGLE */
 .theme-toggle{
-  width:36px;height:36px;border-radius:50%;
-  background:var(--gold-light);border:1.5px solid var(--gold-border2);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  font-size:16px;transition:all .2s;flex-shrink:0;
+  width:42px;height:24px;border-radius:12px;
+  background:var(--bg3);border:1.5px solid var(--gold-border2);
+  cursor:pointer;position:relative;flex-shrink:0;
+  transition:background .3s,border-color .3s;
 }
-.theme-toggle:hover{background:var(--gold-light);transform:scale(1.1)}
+.theme-toggle::after{
+  content:'';position:absolute;top:3px;left:3px;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--gold);transition:transform .3s,background .3s;
+}
+[data-theme="dark"] .theme-toggle::after{transform:translateX(18px);}
 
 .nav-cta{
   background:var(--gold);color:var(--bg);border:none;
@@ -259,6 +264,7 @@ nav{
   border-right:1px solid var(--border);
   display:flex;flex-direction:column;overflow:hidden;
 }
+#map{flex:1;height:560px;min-height:560px;}
 .ms-head{padding:1.2rem;border-bottom:1px solid var(--border);flex-shrink:0}
 .ms-kicker{font-family:'Space Mono';font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:.3rem}
 .ms-title{font-size:14px;font-weight:700;color:var(--text)}
@@ -465,9 +471,7 @@ footer ul a:hover{color:var(--gold)}
       <button class="lang-btn" onclick="setLang('en',this)">EN</button>
     </div>
     <!-- Toggle dark/light -->
-    <button class="theme-toggle" onclick="toggleTheme()" title="Mode sombre / clair" id="themeBtn">
-  <span id="themeIcon">☀️</span>
-</button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Mode sombre / clair" id="themeBtn"></button>
     <!-- CTA -->
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
       <span data-i18n="nav.contact">Contacto</span>
@@ -789,10 +793,6 @@ function applyTheme(theme) {
   ];
   vars.forEach(([k,v]) => root.style.setProperty(k, v));
   
-  // Icône
-  const icon = document.getElementById('themeIcon');
-  if(icon) icon.textContent = theme === 'dark' ? '🌙' : '☀️';
-  
   // Sauvegarder
   try { localStorage.setItem('anb-theme', theme); } catch(e) {}
   
@@ -1023,6 +1023,10 @@ const CITIES = {
   az:{name:'Azua', lat:18.4547, lng:-70.7340, active:false, capital:false, note:'Provincia Azua · Suroeste', air:'5–6 días vía SDQ', sea:'20–24 días'},
 };
 
+// Forcer la hauteur du conteneur carte avant init Leaflet
+document.getElementById('map').style.height = '560px';
+document.getElementById('map').style.minHeight = '560px';
+
 const map = L.map('map', {center:[18.85,-70.15], zoom:8, minZoom:6, maxZoom:16});
 
 let tileLayer;
@@ -1069,6 +1073,15 @@ function selectCity(id){
   markers[id].openPopup();
 }
 document.querySelectorAll('.city-btn').forEach(b => b.addEventListener('click', () => selectCity(b.dataset.id)));
+
+// Forcer Leaflet à recalculer la taille après rendu complet
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    if(map) {
+      map.invalidateSize();
+    }
+  }, 300);
+});
 
 // ══════════════════════════════════════════
 // AI CHAT
