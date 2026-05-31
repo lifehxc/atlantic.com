@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Atlantic N&B Food & Health — República Dominicana</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=Rockwell+Nova:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -74,10 +74,11 @@ body.light .tog-k{transform:translateX(20px)}
 .tag-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.6s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 .hero h1{font-family:'Playfair Display';font-size:clamp(2.6rem,4.2vw,4rem);font-weight:400;line-height:1.08;margin-bottom:1.4rem;color:var(--text)}
+.hero h1 .rockwell{font-family:'Rockwell Nova','Rockwell','Georgia',serif;font-weight:700;font-style:normal;color:var(--gold);letter-spacing:.02em}
 .hero h1 em{font-style:italic;color:var(--gold)}
 .hero-body{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:2.2rem;max-width:520px}
 .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.btn-p{background:var(--gold);color:var(--bg);border:none;padding:.9rem 2.2rem;font-family:'Syne';font-size:13px;font-weight:700;letter-spacing:.06em;cursor:pointer}
+.btn-p{background:var(--gold);color:var(--bg);border:none;padding:.9rem 2.2rem;font-family:'Syne';font-size:13px;font-weight:700;letter-spacing:.06em;cursor:pointer;min-height:44px}
 .btn-p:hover{background:var(--gold2)}
 .btn-s{background:transparent;border:1.5px solid var(--gc);color:var(--gold);padding:.9rem 2rem;font-family:'Syne';font-size:13px;font-weight:600;cursor:pointer}
 .btn-s:hover{background:var(--ga)}
@@ -98,6 +99,99 @@ body.light .tog-k{transform:translateX(20px)}
 /* SECTIONS */
 .sec{padding:6rem 3.5rem;position:relative;z-index:1}
 .sec.alt{background:var(--bg2)}
+
+/* Sections Transport & Services — TOUJOURS en mode clair */
+.sec.force-light{
+  background:#F5F1EA !important;
+  color:#1A1510 !important;
+}
+.sec.force-light .sec-h{color:#1A1510 !important}
+.sec.force-light .sec-h em{color:#8B6914 !important}
+.sec.force-light .kicker{color:#8B6914 !important}
+.sec.force-light .tr{background:#FFFFFF !important;border-color:rgba(139,105,20,.15) !important}
+.sec.force-light .tr:hover{background:#F9F6F0 !important}
+.sec.force-light .tr-mode{color:#8B6914 !important}
+.sec.force-light .tr-t{color:#1A1510 !important}
+.sec.force-light .tr-via{color:#8B6914 !important}
+.sec.force-light .tr-d{color:rgba(26,21,16,.55) !important}
+.sec.force-light .tr-spec{color:rgba(26,21,16,.55) !important}
+.sec.force-light .tr-spec::before{color:#8B6914 !important}
+.sec.force-light .tr-ico{background:rgba(139,105,20,.07) !important;border-color:rgba(139,105,20,.25) !important}
+.sec.force-light .tr-ico svg{stroke:#8B6914 !important}
+.sec.force-light .tr-grid{background:rgba(139,105,20,.25) !important;border-color:rgba(139,105,20,.25) !important}
+.sec.force-light .tr::after{background:#8B6914 !important}
+/* Services force-light */
+.sec.force-light .svc{background:#FFFFFF !important}
+.sec.force-light .svc:hover{background:#F9F6F0 !important}
+.sec.force-light .svc-grid{background:rgba(139,105,20,.25) !important;border-color:rgba(139,105,20,.25) !important}
+.sec.force-light .svc-num{color:#8B6914 !important}
+.sec.force-light .svc-t{color:#1A1510 !important}
+.sec.force-light .svc-d{color:rgba(26,21,16,.55) !important}
+.sec.force-light .svc-ico{background:rgba(139,105,20,.07) !important;border-color:rgba(139,105,20,.25) !important}
+.sec.force-light .svc-ico svg{stroke:#8B6914 !important}
+.sec.force-light .svc::after{background:#8B6914 !important}
+.sec.force-light .svc-soon{background:rgba(139,105,20,.07) !important;color:#8B6914 !important;border-color:rgba(139,105,20,.2) !important}
+
+/* Profils force-light */
+.sec.force-light .pro{background:#FFFFFF !important}
+.sec.force-light .pro:hover{background:#F9F6F0 !important}
+.sec.force-light .pro-grid{background:rgba(139,105,20,.25) !important;border-color:rgba(139,105,20,.25) !important}
+.sec.force-light .pro-t{color:#1A1510 !important}
+.sec.force-light .pro-d{color:rgba(26,21,16,.55) !important}
+.sec.force-light .pro-li li{color:rgba(26,21,16,.55) !important}
+.sec.force-light .pro-li li::before{color:#8B6914 !important}
+.sec.force-light .pro-ico{background:rgba(139,105,20,.07) !important;border-color:rgba(139,105,20,.25) !important}
+.sec.force-light .pro-ico svg{stroke:#8B6914 !important}
+.sec.force-light .pro::after{background:#8B6914 !important}
+.sec.force-light .pro-cta{color:#8B6914 !important;border-color:rgba(139,105,20,.3) !important}
+.sec.force-light .pro-cta:hover{background:rgba(139,105,20,.07) !important}
+/* IA force-light */
+.sec.force-light .af-ico{background:rgba(139,105,20,.07) !important;border-color:rgba(139,105,20,.25) !important}
+.sec.force-light .af-ico svg{stroke:#8B6914 !important}
+.sec.force-light .af{border-bottom-color:rgba(26,21,16,.1) !important}
+.sec.force-light .af-n{color:#1A1510 !important}
+.sec.force-light .af-s{color:rgba(26,21,16,.5) !important}
+.sec.force-light .ai-chat{background:#FFFFFF !important;border-color:rgba(139,105,20,.25) !important}
+.sec.force-light .ai-hd{background:#F5F1EA !important;border-bottom-color:rgba(139,105,20,.15) !important}
+.sec.force-light .ai-hn{color:#1A1510 !important}
+.sec.force-light .ai-hs{color:rgba(26,21,16,.45) !important}
+.sec.force-light .ai-msgs{background:#FFFFFF}
+.sec.force-light .amsg.bot .amsg-b{background:rgba(139,105,20,.07) !important;border-left-color:#8B6914 !important;color:#1A1510 !important}
+.sec.force-light .amsg.usr .amsg-b{background:#8B6914 !important;color:#FFFFFF !important}
+.sec.force-light .ai-sugg{background:#FFFFFF}
+.sec.force-light .ai-sug{border-color:rgba(139,105,20,.2) !important;color:rgba(26,21,16,.5) !important}
+.sec.force-light .ai-sug:hover{border-color:#8B6914 !important;color:#8B6914 !important}
+.sec.force-light .ai-inp-row{border-top-color:rgba(139,105,20,.15) !important;background:#FFFFFF}
+.sec.force-light .ai-inp{color:#1A1510 !important}
+.sec.force-light .ai-inp::placeholder{color:rgba(26,21,16,.35) !important}
+.sec.force-light .ai-send{background:#8B6914 !important;color:#FFFFFF !important}
+.sec.force-light .ai-ol{color:#169964 !important}
+.sec.force-light .ai-ol::before{background:#169964 !important}
+/* Contact force-light */
+.sec.force-light .ci-row{border-bottom-color:rgba(26,21,16,.1) !important}
+.sec.force-light .ci-l{color:#8B6914 !important}
+.sec.force-light .ci-v{color:rgba(26,21,16,.55) !important}
+.sec.force-light .cf-i{background:#FFFFFF !important;border-color:rgba(139,105,20,.25) !important;color:#1A1510 !important}
+.sec.force-light .cf-i:focus{border-color:#8B6914 !important}
+.sec.force-light .cf-l{color:#8B6914 !important}
+/* Map sidebar force-light */
+.map-sec.force-light .map-sb{background:#FFFFFF !important}
+.map-sec.force-light .msb-hd{border-bottom-color:rgba(139,105,20,.15) !important}
+.map-sec.force-light .msb-k{color:#8B6914 !important}
+.map-sec.force-light .msb-t{color:#1A1510 !important}
+.map-sec.force-light .msb-t em{color:#8B6914 !important}
+.map-sec.force-light .city-btn{color:rgba(26,21,16,.5) !important}
+.map-sec.force-light .city-btn:hover,.map-sec.force-light .city-btn.on{background:rgba(139,105,20,.07) !important;border-left-color:#8B6914 !important;color:#8B6914 !important}
+.map-sec.force-light .cdot-ok{background:#169964 !important}
+.map-sec.force-light .cb-pill.p-ok{background:rgba(22,153,100,.07) !important;color:#169964 !important;border-color:rgba(22,153,100,.2) !important}
+.map-sec.force-light .cb-pill.p-soon{background:rgba(139,105,20,.06) !important;color:#8B6914 !important;border-color:rgba(139,105,20,.2) !important}
+.map-sec.force-light .msb-infra{border-top-color:rgba(139,105,20,.15) !important}
+.map-sec.force-light .ic{background:rgba(139,105,20,.07) !important;border-color:rgba(139,105,20,.15) !important}
+.map-sec.force-light .ic-l{color:rgba(26,21,16,.5) !important}
+.map-sec.force-light .ic-v{color:#1A1510 !important}
+.map-sec.force-light .map-hd{background:#F5F1EA !important}
+/* Dividers */
+.sec.force-light + .div{opacity:.6}
 .sec-in{max-width:1240px;margin:0 auto}
 .kicker{font-family:'Space Mono';font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;opacity:.8}
 .sec-h{font-family:'Playfair Display';font-size:clamp(1.9rem,3vw,2.7rem);font-weight:400;margin-bottom:2.8rem;color:var(--text)}
@@ -131,7 +225,7 @@ body.light .tog-k{transform:translateX(20px)}
 .msb-t em{font-style:italic;color:var(--gold);font-weight:400}
 .msb-list{flex:1;overflow-y:auto;scrollbar-width:none;padding:.3rem 0}
 .msb-list::-webkit-scrollbar{display:none}
-.city-btn{width:100%;text-align:left;background:transparent;border:none;border-left:2px solid transparent;padding:.62rem 1rem;font-family:'Syne';font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:.6rem}
+.city-btn{width:100%;text-align:left;background:transparent;border:none;border-left:2px solid transparent;padding:.62rem 1rem;font-family:'Syne';font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:.6rem;min-height:44px}
 .city-btn:hover,.city-btn.on{background:var(--ga);border-left-color:var(--gold);color:var(--gold)}
 .cdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .cdot-ok{background:var(--ok)}
@@ -245,7 +339,11 @@ body.light .tog-k{transform:translateX(20px)}
 textarea.cf-i{resize:vertical;min-height:90px}
 
 /* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--b);padding:3.5rem 3.5rem 2rem}
+footer{background:#EDE8DF;border-top:1px solid rgba(139,105,20,.15);padding:3.5rem 3.5rem 2rem;color:#1A1510}
+footer .fh{color:#8B6914 !important}
+footer ul a{color:rgba(26,21,16,.55) !important}
+footer ul a:hover{color:#8B6914 !important}
+footer .fb p{color:rgba(26,21,16,.4) !important}
 .fi{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
 .fh{font-family:'Space Mono';font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:1rem}
 footer ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
@@ -257,19 +355,55 @@ footer ul a:hover{color:var(--gold)}
 []:focus{outline:1px solid var(--gold)}
 
 @media(max-width:1024px){
-  .hero-in{grid-template-columns:1fr;gap:2.5rem}
+  .hero-in{grid-template-columns:1fr;gap:2rem}
   .tr-grid,.svc-grid,.pro-grid,.ai-in,.con-in{grid-template-columns:1fr}
   .map-wrap{flex-direction:column}
-  .map-sb{width:100%}
-  #map{height:400px}
+  .map-sb{width:100%;max-height:220px}
+  .msb-list{max-height:130px}
+  #map{height:380px;min-height:380px}
 }
 @media(max-width:768px){
-  nav{padding:0 1.2rem}.nav-links{display:none}
-  .sec{padding:4rem 1.5rem}
-  .hero-in{padding:2rem 1.5rem}
+  nav{padding:0 1rem;height:54px}
+  .nav-links{display:none}
+  .nav-r{gap:.5rem}
+  .lang-sw{display:none}
+  .nav-login span{display:none}
+  .nav-login{padding:.4rem .7rem}
+  .sec{padding:3rem 1.2rem}
+  .sec.mid,.sec.alt{padding:3rem 1.2rem}
+  .hero-in{padding:1.5rem 1.2rem;gap:2rem}
+  .hero h1{font-size:clamp(2rem,10vw,3rem)}
+  .hero-body{font-size:14px}
+  .hero-btns{flex-direction:column}
+  .btn-p,.btn-s{width:100%;text-align:center;padding:.85rem}
+  .stats{grid-template-columns:1fr 1fr}
+  .st{padding:1.2rem 1rem}
+  .st-v{font-size:1.8rem}
+  .tr-grid,.svc-grid{grid-template-columns:1fr}
+  .pro-grid{grid-template-columns:1fr}
+  .ai-in{grid-template-columns:1fr}
+  .con-in{grid-template-columns:1fr;gap:2.5rem}
   .fi{grid-template-columns:1fr 1fr}
-  footer{padding:3rem 1.5rem 2rem}
+  footer{padding:2.5rem 1.2rem 1.5rem}
   .cf-row{grid-template-columns:1fr}
+  .map-wrap{flex-direction:column}
+  .map-sb{width:100%;height:auto}
+  .msb-list{max-height:160px;overflow-y:auto}
+  #map{height:320px;min-height:320px}
+  .map-hd{padding:2rem 1.2rem 1rem}
+  .sec-h{font-size:1.6rem;margin-bottom:2rem}
+  .ai-chat{margin-top:1.5rem}
+  .ai-msgs{min-height:150px;max-height:200px}
+  /* Section projet mobile */
+  #proyecto .sec-in > div:last-child{grid-template-columns:1fr !important}
+  #proyecto .sec-in > div{grid-template-columns:1fr !important}
+}
+@media(max-width:480px){
+  .stats{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:clamp(1.8rem,9vw,2.5rem)}
+  .nav-cta{padding:.4rem .9rem;font-size:9.5px}
+  .tr-grid,.svc-grid,.pro-grid{grid-template-columns:1fr}
+  .fi{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -325,7 +459,7 @@ footer ul a:hover{color:var(--gold)}
 </section>
 
 
-<section class="sec" id="proyecto" style="background:var(--bg)">
+<section class="sec force-light" id="proyecto" style="background:var(--bg)">
   <div class="sec-in" style="max-width:900px">
     <div class="kicker" data-i="about.l">[ 00 ] — El Proyecto</div>
     <h2 class="sec-h" data-i="about.h">Una nueva <em>ruta comercial</em><br>entre dos continentes</h2>
@@ -357,7 +491,7 @@ footer ul a:hover{color:var(--gold)}
 
 <div class="div"></div>
 
-<section class="sec alt" id="transport">
+<section class="sec force-light" id="transport">
   <div class="sec-in">
     <div class="kicker">[ 01 ] — <span data-i="tr.l">Logística</span></div>
     <h2 class="sec-h"><span data-i="tr.h">Dos modos de transporte,</span><br><em><span data-i="tr.h2">una sola fiabilidad</span></em></h2>
@@ -394,7 +528,7 @@ footer ul a:hover{color:var(--gold)}
 
 <div class="div"></div>
 
-<section class="map-sec" id="cobertura">
+<section class="map-sec force-light" id="cobertura">
   <div class="map-hd alt">
     <div class="map-hd-in">
       <div class="kicker">[ 02 ] — <span data-i="map.l">Cobertura</span></div>
@@ -429,7 +563,7 @@ footer ul a:hover{color:var(--gold)}
 
 <div class="div"></div>
 
-<section class="sec alt" id="servicios">
+<section class="sec force-light" id="servicios">
   <div class="sec-in">
     <div class="kicker">[ 03 ] — <span data-i="svc.l">Servicios</span></div>
     <h2 class="sec-h"><span data-i="svc.h">Nuestra</span> <em><span data-i="svc.h2">experiencia</span></em></h2>
@@ -444,7 +578,7 @@ footer ul a:hover{color:var(--gold)}
 
 <div class="div"></div>
 
-<section class="sec" id="perfiles">
+<section class="sec force-light" id="perfiles">
   <div class="sec-in">
     <div class="kicker">[ 04 ] — <span data-i="pro.l">Clientes</span></div>
     <h2 class="sec-h"><span data-i="pro.h">Su solución,</span> <em><span data-i="pro.h2">a medida</span></em></h2>
@@ -458,7 +592,7 @@ footer ul a:hover{color:var(--gold)}
 
 <div class="div"></div>
 
-<section class="sec alt" id="ai">
+<section class="sec force-light" id="ai">
   <div class="sec-in">
     <div class="kicker">[ 05 ] — <span data-i="ai.l">Inteligencia artificial</span></div>
     <h2 class="sec-h"><span data-i="ai.h">Su asesor</span> <em><span data-i="ai.h2">farmacéutico</span></em><br><span data-i="ai.h3">disponible 24h/24</span></h2>
@@ -483,7 +617,7 @@ footer ul a:hover{color:var(--gold)}
 
 <div class="div"></div>
 
-<section class="sec" id="contact">
+<section class="sec force-light" id="contact">
   <div class="con-in">
     <div>
       <div class="kicker">[ 06 ] — <span data-i="con.l">Contacto</span></div>
