@@ -10,6 +10,47 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+
+/* ══ SONAR SWEEP — horizontal ══ */
+#sonar{
+  position:absolute;
+  left:0;
+  top:-2px;
+  width:100%;
+  height:2px;
+  z-index:9999;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201,168,76,0) 15%,
+    rgba(201,168,76,.7) 50%,
+    rgba(201,168,76,0) 85%,
+    transparent 100%
+  );
+  animation:sonarSweep 5s linear infinite;
+}
+#sonar-glow{
+  position:absolute;
+  left:0;
+  top:-18px;
+  width:100%;
+  height:18px;
+  z-index:9998;
+  pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(201,168,76,.05) 100%
+  );
+  animation:sonarSweep 5s linear infinite;
+}
+@keyframes sonarSweep{
+  0%   { top:-20px; opacity:0 }
+  3%   { opacity:1 }
+  97%  { opacity:1 }
+  100% { top:100vh; opacity:0 }
+}
 body{font-family:'Syne',sans-serif;overflow-x:hidden}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-thumb{border-radius:2px}
@@ -497,6 +538,9 @@ footer ul a:hover{color:var(--gold)}
 
 <section class="hero" id="home">
   <div class="hero-line"></div>
+  <!-- SONAR — uniquement sur le hero -->
+  <div id="sonar"></div>
+  <div id="sonar-glow"></div>
   <div class="hero-in">
     <div>
       <div class="hero-tag"><div class="tag-dot"></div><span data-i="h.tag">Importación farmacéutica · República Dominicana</span></div>
@@ -841,7 +885,7 @@ var T = {
   en: {
     'nav.tr':'Transport','nav.co':'Coverage','nav.sv':'Services','nav.cl':'Clients','nav.ai':'AI Assistant','nav.login':'Accès','nav.login':'Login','nav.ct':'Contact',
     'h.tag':'Pharmaceutical import · Dominican Republic','h.a':'Project','h.b':'ATLANTIC','h.c':'Health for everyone',
-    'h.body':'Atlantic N&B is the strategic link of a historic project: building a new trade route between Africa and Latin America, with the Dominican Republic as its hub. First-quality medicines, accessible to all — \"Health for everyone\" is our mission.',
+    'h.body':'Atlantic N&B is the strategic link of a historic project: building a new trade route between Africa and Latin America, with the Dominican Republic as its strategic platform. First-quality medicines, accessible to all — \"Health for everyone\" is our mission.',
     'h.b1':'See DR coverage','h.b2':'AI Assistant',
     's1l':'Pharmaceutical references','s1n':'CAASD/SESPAS approved','s2l':'Air transit','s2n':'Europe → Santo Domingo',
     's3l':'Transport modes','s3n':'Air express + Maritime','s4l':'Cold chain','s4n':'Certified end-to-end',
