@@ -181,8 +181,8 @@ body.light .tog-k{transform:translateX(20px)}
 .svc-soon{position:absolute;top:.8rem;right:.8rem;font-family:'Space Mono';font-size:7px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;background:var(--ga);color:var(--gold);border:1px solid var(--b);opacity:.7}
 
 /* PROFILES */
-.pro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b2);border:1.5px solid var(--b)}
-.pro{background:var(--card);padding:2.4rem;position:relative;overflow:hidden;cursor:default}
+.pro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b2);border:1.5px solid var(--b);align-items:stretch}
+.pro{background:var(--card);padding:2.4rem;position:relative;overflow:hidden;cursor:default;display:flex;flex-direction:column}
 .pro:hover{background:var(--card-h)}
 .pro::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s}
 .pro:hover::after{transform:scaleX(1)}
@@ -190,7 +190,7 @@ body.light .tog-k{transform:translateX(20px)}
 .pro-ico svg{width:19px;height:19px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .pro-t{font-size:15px;font-weight:700;color:var(--text);margin-bottom:.6rem}
 .pro-d{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:1.2rem}
-.pro-li{list-style:none;display:flex;flex-direction:column;gap:.35rem;margin-bottom:1.2rem}
+.pro-li{list-style:none;display:flex;flex-direction:column;gap:.35rem;margin-bottom:1.2rem;flex:1}
 .pro-li li{font-size:12px;color:var(--muted);display:flex;gap:.4rem;line-height:1.5}
 .pro-li li::before{content:'—';color:var(--gold);opacity:.5;font-family:'Space Mono';font-size:10px;flex-shrink:0}
 .pro-cta{background:transparent;border:1.5px solid var(--b2);color:var(--gold);padding:.55rem 1.1rem;font-size:10px;font-family:'Syne';font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
@@ -343,7 +343,7 @@ footer ul a:hover{color:var(--gold)}
         <div style="background:var(--card);padding:1.5rem;cursor:default">
           <div style="font-size:1.8rem;font-family:'Playfair Display';color:var(--gold);font-weight:400;line-height:1;margin-bottom:.4rem">💊</div>
           <div style="font-family:'Space Mono';font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem" data-i="about.r2l">Producto estratégico</div>
-          <div style="font-size:13px;color:var(--muted)" data-i="about.r2v">Insulina y medicamentos esenciales — acceso continuo para todos</div>
+          <div style="font-size:13px;color:var(--muted)" data-i="about.r2v">Medicamentos esenciales — acceso continuo y garantizado para todos</div>
         </div>
         <div style="background:var(--card);padding:1.5rem;cursor:default">
           <div style="font-size:1.8rem;font-family:'Playfair Display';color:var(--gold);font-weight:400;line-height:1;margin-bottom:.4rem">🤝</div>
@@ -577,7 +577,7 @@ function toggleMode() {
 // ══ I18N ══
 var T = {
   es: {
-    'about.l':'[ 00 ] — El Proyecto','about.h':'Una nueva ruta comercial entre dos continentes','about.p1':'El proyecto ATLANTIC nace de una visión: crear una ruta comercial directa entre África y América Latina, con la República Dominicana como base estratégica y logística.','about.p2':'Nuestro socio africano, líder farmacéutico, garantiza un suministro continuo y competitivo para el Caribe y América Latina.','about.r1l':'Ruta comercial','about.r1v':'África → República Dominicana → Caribe & América Latina','about.r2l':'Producto estratégico','about.r2v':'Insulina y medicamentos esenciales — acceso continuo para todos','about.r3l':'Visión','about.r3v':'"La salud para todos" — alianzas equitativas entre países emergentes','nav.tr':'Transporte','nav.co':'Cobertura','nav.sv':'Servicios','nav.cl':'Clientes','nav.ai':'Asistente IA','nav.login':'Acceso','nav.ct':'Contacto',
+    'about.l':'[ 00 ] — El Proyecto','about.h':'Una nueva ruta comercial entre dos continentes','about.p1':'El proyecto ATLANTIC nace de una visión: crear una ruta comercial directa entre África y América Latina, con la República Dominicana como base estratégica y logística.','about.p2':'Nuestro socio africano, líder farmacéutico, garantiza un suministro continuo y competitivo para el Caribe y América Latina.','about.r1l':'Ruta comercial','about.r1v':'África → República Dominicana → Caribe & América Latina','about.r2l':'Producto estratégico','about.r2v':'Medicamentos esenciales — acceso continuo y garantizado para todos','about.r3l':'Visión','about.r3v':'"La salud para todos" — alianzas equitativas entre países emergentes','nav.tr':'Transporte','nav.co':'Cobertura','nav.sv':'Servicios','nav.cl':'Clientes','nav.ai':'Asistente IA','nav.login':'Acceso','nav.ct':'Contacto',
     'h.tag':'Importación farmacéutica · República Dominicana','h.a':'Proyecto','h.b':'ATLANTIC','h.c':'La salud para todos',
     'h.body':'Atlantic N&B es el eslabón estratégico de un proyecto histórico: la creación de una nueva ruta comercial entre África y América Latina, con base en la República Dominicana. Medicamentos de primera calidad, accesibles para todos — \"La salud para todos\" es nuestra misión.',
     'h.b1':'Ver cobertura RD','h.b2':'Asistente IA',
@@ -591,13 +591,13 @@ var T = {
     'map.l':'Cobertura','map.h':'República Dominicana —','map.h2':'nuestra zona de operación','map.d':'Operamos desde Santiago hacia todo el territorio dominicano.',
     'map.net':'Red de distribución','map.ci':'Ciudades','map.op':'operativas','inf.air':'Aéreo','inf.sea':'Marítimo','pill.ok':'Activo','pill.soon':'En curso',
     'svc.l':'Servicios','svc.h':'Nuestra','svc.h2':'experiencia',
-    's1.t':'Importación farmacéutica','s1.d':'Medicamentos de producción africana certificados, conformes con las autoridades dominicanas. Expedientes CAASD/SESPAS pre-constituidos por lote.',
+    's1.t':'Importación farmacéutica','s1.d':'Medicamentos de calidad certificada, conformes con las autoridades dominicanas. Expedientes CAASD/SESPAS pre-constituidos por lote, trazabilidad garantizada.',
     's2.t':'Cumplimiento regulatorio RD','s2.d':'Coordinación SESPAS, CAASD y SISALRIL. Registro, despacho y homologaciones.',
     's3.t':'Cadena de frío certificada','s3.d':'Monitoreo 2°C–8°C y −20°C. GDP garantizado.','s4.t':'Importación alimentaria','s4.d':'Próxima extensión hacia productos alimentarios.','soon':'Próximamente',
     'pro.l':'Clientes','pro.h':'Su solución,','pro.h2':'a medida',
-    'p1.t':'Farmacias','p1.d':'Abastecimiento regular, 500+ referencias homologadas, SISALRIL.','p1.l1':'5–7 días aéreo, 18–22 días marítimo','p1.l2':'Expedientes regulatorios incluidos','p1.l3':'Entrega directa en farmacia','p1.l4':'Soporte IA 24h/24','p1.cta':'Ser socio →',
-    'p2.t':'Hospitales y Clínicas','p2.d':'Urgencias 48h, trazabilidad SESPAS, GDP para biológicos.','p2.l1':'Stock urgencias SDQ','p2.l2':'Trazabilidad lote por lote','p2.l3':'Biológicos, vacunas, oncología','p2.l4':'Contrato marco','p2.cta':'Contactar →',
-    'p3.t':'Distribuidores','p3.d':'Referencias europeas exclusivas, soporte CAASD, formación.','p3.l1':'Exclusividades territoriales','p3.l2':'Precios salida de fábrica','p3.l3':'Registro CAASD','p3.l4':'Co-marketing y formación','p3.cta':'Explorar →',
+    'p1.t':'Farmacias','p1.d':'Acceso a medicamentos esenciales de calidad certificada, a precios competitivos gracias a una cadena de producción autónoma. Un abastecimiento regular y confiable para sus pacientes.','p1.l1':'Suministro continuo y garantizado','p1.l2':'Precios accesibles — producción directa','p1.l3':'Cumplimiento CAASD/SESPAS incluido','p1.l4':'Entrega en todo el territorio RD','p1.cta':'Ser socio →',
+    'p2.t':'Hospitales y Clínicas','p2.d':'Medicamentos de primera calidad para sus protocolos clínicos. Una cadena de frío certificada GDP y una trazabilidad completa para responder a las exigencias más altas.','p2.l1':'Cadena de frío GDP certificada','p2.l2':'Trazabilidad lote por lote','p2.l3':'Stock adaptado a sus necesidades','p2.l4':'Contrato marco por volúmenes','p2.cta':'Contactar →',
+    'p3.t':'Distribuidores y Mayoristas','p3.d':'Una oportunidad única de posicionarse en una nueva ruta comercial entre África y América Latina. Precios competitivos, producción autónoma, mercado en crecimiento.','p3.l1':'Acceso a una ruta comercial inédita','p3.l2':'Precios competitivos — producción directa','p3.l3':'Exclusividades territoriales disponibles','p3.l4':'Acompañamiento regulatorio CAASD','p3.cta':'Explorar →',
     'ai.l':'Inteligencia artificial','ai.h':'Su asesor','ai.h2':'farmacéutico','ai.h3':'disponible 24h/24',
     'ai.d':'Regulaciones SESPAS, plazos aduaneros, registro CAASD — en español, francés o inglés.',
     'ai.f1n':'Respuestas instantáneas','ai.f1s':'24h/24 · 7 días/7','ai.f2s':'Adaptado al mercado dominicano','ai.f3s':'Regulaciones RD actualizadas',
@@ -612,7 +612,7 @@ var T = {
     'ft.co':'Empresa','ft.c1':'Quiénes somos','ft.c2':'Contacto','ft.c3':'Aviso legal',
   },
   fr: {
-    'about.l':'[ 00 ] — Le Projet','about.h':'Une nouvelle route commerciale entre deux continents','about.p1':'Le projet ATLANTIC est né d’une vision : créer une route commerciale directe entre l’Afrique et l’Amérique Latine, avec la République Dominicaine comme base stratégique.','about.p2':'Notre partenaire africain, leader pharmaceutique, garantit un approvisionnement continu et compétitif pour les Caraïbes et l’Amérique Latine.','about.r1l':'Route commerciale','about.r1v':'Afrique → République Dominicaine → Caraïbes & Amérique Latine','about.r2l':'Produit stratégique','about.r2v':'Insuline et médicaments essentiels — accès continu pour tous','about.r3l':'Vision','about.r3v':'"La santé pour tous" — alliances équitables entre pays émergents','nav.tr':'Transport','nav.co':'Couverture','nav.sv':'Services','nav.cl':'Clients','nav.ai':'Assistant IA','nav.login':'Accès','nav.login':'Login','nav.ct':'Contact',
+    'about.l':'[ 00 ] — Le Projet','about.h':'Une nouvelle route commerciale entre deux continents','about.p1':'Le projet ATLANTIC est né d’une vision : créer une route commerciale directe entre l’Afrique et l’Amérique Latine, avec la République Dominicaine comme base stratégique.','about.p2':'Notre partenaire africain, leader pharmaceutique, garantit un approvisionnement continu et compétitif pour les Caraïbes et l’Amérique Latine.','about.r1l':'Route commerciale','about.r1v':'Afrique → République Dominicaine → Caraïbes & Amérique Latine','about.r2l':'Produit stratégique','about.r2v':'Médicaments essentiels — accès continu et garanti pour tous','about.r3l':'Vision','about.r3v':'"La santé pour tous" — alliances équitables entre pays émergents','nav.tr':'Transport','nav.co':'Couverture','nav.sv':'Services','nav.cl':'Clients','nav.ai':'Assistant IA','nav.login':'Accès','nav.login':'Login','nav.ct':'Contact',
     'h.tag':'Import pharmaceutique · République Dominicaine','h.a':'Projet','h.b':'ATLANTIC','h.c':'La santé pour tous',
     'h.body':'Atlantic N&B est le maillon stratégique d’un projet historique : la création d’une nouvelle route commerciale entre l’Afrique et l’Amérique Latine, avec base en République Dominicaine. Des médicaments de première qualité, accessibles à tous — \"La santé pour tous\" est notre mission.',
     'h.b1':'Voir la couverture RD','h.b2':'Assistant IA',
@@ -629,9 +629,9 @@ var T = {
     's1.t':'Import pharmaceutique','s1.d':'Médicaments conformes ANSM, FDA et autorités dominicaines.','s2.t':'Conformité réglementaire RD','s2.d':'Coordination SESPAS, CAASD et SISALRIL.',
     's3.t':'Chaîne du froid certifiée','s3.d':'Monitoring 2°C–8°C et −20°C. GDP garanti.','s4.t':'Import alimentaire','s4.d':'Prochaine extension vers les produits alimentaires.','soon':'Bientôt',
     'pro.l':'Profils','pro.h':'Votre solution,','pro.h2':'sur mesure',
-    'p1.t':'Pharmaciens','p1.d':'Approvisionnement régulier, 500+ références, SISALRIL.','p1.l1':'5–7j aérien, 18–22j maritime','p1.l2':'Dossiers inclus','p1.l3':'Livraison directe officine','p1.l4':'Support IA 24h/24','p1.cta':'Devenir partenaire →',
-    'p2.t':'Hôpitaux & Cliniques','p2.d':'Urgences 48h, traçabilité SESPAS, GDP pour biologiques.','p2.l1':'Stock urgences SDQ','p2.l2':'Traçabilité lot certifiée','p2.l3':'Vaccins & oncologie','p2.l4':'Contrat-cadre','p2.cta':'Contacter →',
-    'p3.t':'Distributeurs','p3.d':'Références européennes exclusives, support CAASD, formation.','p3.l1':'Exclusivités territoriales','p3.l2':'Prix départ usine','p3.l3':'Enregistrement CAASD','p3.l4':'Co-marketing & formation','p3.cta':'Explorer →',
+    'p1.t':'Pharmaciens','p1.d':'Accès à des médicaments essentiels de qualité certifiée, à des prix compétitifs grâce à une chaîne de production autonome. Un approvisionnement régulier et fiable pour vos patients.','p1.l1':'Approvisionnement continu et garanti','p1.l2':'Prix accessibles — production directe','p1.l3':'Conformité CAASD/SESPAS incluse','p1.l4':'Livraison sur tout le territoire RD','p1.cta':'Devenir partenaire →',
+    'p2.t':'Hôpitaux & Cliniques','p2.d':'Des médicaments de première qualité pour vos protocoles cliniques. Une chaîne du froid certifiée GDP et une traçabilité complète pour répondre aux exigences les plus strictes.','p2.l1':'Chaîne du froid GDP certifiée','p2.l2':'Traçabilité lot par lot','p2.l3':'Stock adapté à vos besoins','p2.l4':'Contrat-cadre par volumes','p2.cta':'Contacter →',
+    'p3.t':'Distributeurs & Grossistes','p3.d':'Une opportunité unique de vous positionner sur une nouvelle route commerciale entre l’Afrique et l’Amérique Latine. Prix compétitifs, production autonome, marché en pleine croissance.','p3.l1':'Accès à une route commerciale inédite','p3.l2':'Prix compétitifs — production directe','p3.l3':'Exclusivités territoriales disponibles','p3.l4':'Accompagnement réglementaire CAASD','p3.cta':'Explorer →',
     'ai.l':'Intelligence artificielle','ai.h':'Votre conseiller','ai.h2':'pharmaceutique','ai.h3':'disponible 24h/24',
     'ai.d':'Réglementations SESPAS, délais douaniers, registre CAASD — en espagnol, français ou anglais.',
     'ai.f1n':'Réponses instantanées','ai.f1s':'24h/24 · 7j/7','ai.f2s':'Adapté au marché dominicain','ai.f3s':'Réglementations RD actualisées',
@@ -663,9 +663,9 @@ var T = {
     's1.t':'Pharmaceutical import','s1.d':'ANSM, FDA and Dominican authority compliant medicines.','s2.t':'Regulatory compliance DR','s2.d':'SESPAS, CAASD and SISALRIL coordination.',
     's3.t':'Certified cold chain','s3.d':'2°C–8°C and −20°C monitoring. GDP certified.','s4.t':'Food import','s4.d':'Coming soon — extension to premium food products.','soon':'Coming soon',
     'pro.l':'Clients','pro.h':'Your solution,','pro.h2':'tailored',
-    'p1.t':'Pharmacies','p1.d':'Regular supply, 500+ approved references, SISALRIL.','p1.l1':'5–7 days air, 18–22 days sea','p1.l2':'Regulatory dossiers included','p1.l3':'Direct pharmacy delivery','p1.l4':'AI support 24/7','p1.cta':'Become a partner →',
-    'p2.t':'Hospitals & Clinics','p2.d':'48h emergencies, SESPAS traceability, GDP cold chain.','p2.l1':'Emergency stock SDQ','p2.l2':'Lot-by-lot traceability','p2.l3':'Biologics, vaccines, oncology','p2.l4':'Framework contract','p2.cta':'Contact us →',
-    'p3.t':'Distributors','p3.d':'Exclusive European references, CAASD support, training.','p3.l1':'Territorial exclusivities','p3.l2':'Factory gate pricing','p3.l3':'CAASD registration','p3.l4':'Co-marketing & training','p3.cta':'Explore →',
+    'p1.t':'Pharmacies','p1.d':'Access to certified essential medicines at competitive prices, thanks to an autonomous production chain. A regular and reliable supply for your patients.','p1.l1':'Continuous and guaranteed supply','p1.l2':'Competitive prices — direct production','p1.l3':'CAASD/SESPAS compliance included','p1.l4':'Delivery across the DR','p1.cta':'Become a partner →',
+    'p2.t':'Hospitals & Clinics','p2.d':'First-quality medicines for your clinical protocols. A GDP-certified cold chain and full traceability to meet the highest standards.','p2.l1':'GDP certified cold chain','p2.l2':'Lot-by-lot traceability','p2.l3':'Stock tailored to your needs','p2.l4':'Framework contract by volumes','p2.cta':'Contact us →',
+    'p3.t':'Distributors & Wholesalers','p3.d':'A unique opportunity to position yourself on a new trade route between Africa and Latin America. Competitive prices, autonomous production, growing market.','p3.l1':'Access to an unprecedented trade route','p3.l2':'Competitive prices — direct production','p3.l3':'Territorial exclusivities available','p3.l4':'CAASD regulatory support','p3.cta':'Explore →',
     'ai.l':'Artificial intelligence','ai.h':'Your','ai.h2':'pharmaceutical advisor','ai.h3':'available 24/7',
     'ai.d':'SESPAS regulations, customs timelines, CAASD registry — in Spanish, French or English.',
     'ai.f1n':'Instant answers','ai.f1s':'24/7 · 365 days','ai.f2s':'Tailored to the Dominican market','ai.f3s':'Updated DR regulations',
