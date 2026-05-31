@@ -63,6 +63,8 @@ body.light .tog-k{transform:translateX(20px)}
 
 .nav-cta{background:var(--gold);color:var(--bg);border:none;padding:.5rem 1.3rem;font-family:'Syne';font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 .nav-cta:hover{background:var(--gold2)}
+.nav-login{display:flex;align-items:center;gap:.4rem;background:transparent;border:1.5px solid var(--b2);color:var(--muted);padding:.4rem 1rem;font-family:'Space Mono';font-size:9px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.nav-login:hover{border-color:var(--gold);color:var(--gold)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:62px;position:relative;overflow:hidden}
@@ -293,6 +295,10 @@ footer ul a:hover{color:var(--gold)}
     </div>
     <div class="tog" onclick="toggleMode()"><div class="tog-k"></div></div>
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i="nav.ct">Contacto</button>
+    <a href="https://app.atlanticnb.com" target="_blank" class="nav-login" title="Accès personnel">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span data-i="nav.login">Acceso</span>
+    </a>
   </div>
 </nav>
 
@@ -314,6 +320,37 @@ footer ul a:hover{color:var(--gold)}
       <div class="st hi"><span class="st-v" contenteditable>4–7j</span><span class="st-l" data-i="s2l">Plazo aéreo</span><span class="st-n" data-i="s2n">Europa → Santo Domingo</span></div>
       <div class="st"><span class="st-v">2</span><span class="st-l" data-i="s3l">Modos de transporte</span><span class="st-n" data-i="s3n">Aéreo express + Marítimo</span></div>
       <div class="st hi"><span class="st-v">GDP</span><span class="st-l" data-i="s4l">Cadena de frío</span><span class="st-n" data-i="s4n">Certificada de extremo a extremo</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec" id="proyecto" style="background:var(--bg)">
+  <div class="sec-in" style="max-width:900px">
+    <div class="kicker" data-i="about.l">[ 00 ] — El Proyecto</div>
+    <h2 class="sec-h" data-i="about.h">Una nueva <em>ruta comercial</em><br>entre dos continentes</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+      <div>
+        <p style="font-size:15px;color:var(--muted);line-height:1.95;margin-bottom:1.5rem" data-i="about.p1">El proyecto ATLANTIC nace de una visión: crear una ruta comercial directa entre África y América Latina, con la República Dominicana como base estratégica y logística. Una alianza entre continentes que comparten una historia común y un futuro prometedor.</p>
+        <p style="font-size:15px;color:var(--muted);line-height:1.95" data-i="about.p2">Nuestro socio africano, líder en el sector farmacéutico, cuenta con una cadena de producción completamente autónoma — garantizando un suministro continuo, competitivo y de primera calidad para las regiones del Caribe y América Latina.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b2);border:1.5px solid var(--b)">
+        <div style="background:var(--card);padding:1.5rem;cursor:default">
+          <div style="font-size:1.8rem;font-family:'Playfair Display';color:var(--gold);font-weight:400;line-height:1;margin-bottom:.4rem">🌍→🌎</div>
+          <div style="font-family:'Space Mono';font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem" data-i="about.r1l">Ruta comercial</div>
+          <div style="font-size:13px;color:var(--muted)" data-i="about.r1v">África → República Dominicana → Caribe &amp; América Latina</div>
+        </div>
+        <div style="background:var(--card);padding:1.5rem;cursor:default">
+          <div style="font-size:1.8rem;font-family:'Playfair Display';color:var(--gold);font-weight:400;line-height:1;margin-bottom:.4rem">💊</div>
+          <div style="font-family:'Space Mono';font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem" data-i="about.r2l">Producto estratégico</div>
+          <div style="font-size:13px;color:var(--muted)" data-i="about.r2v">Insulina y medicamentos esenciales — acceso continuo para todos</div>
+        </div>
+        <div style="background:var(--card);padding:1.5rem;cursor:default">
+          <div style="font-size:1.8rem;font-family:'Playfair Display';color:var(--gold);font-weight:400;line-height:1;margin-bottom:.4rem">🤝</div>
+          <div style="font-family:'Space Mono';font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem" data-i="about.r3l">Visión</div>
+          <div style="font-size:13px;color:var(--muted)" data-i="about.r3v">"La salud para todos" — alianzas equitativas entre países emergentes</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -452,7 +489,7 @@ footer ul a:hover{color:var(--gold)}
       <div class="kicker">[ 06 ] — <span data-i="con.l">Contacto</span></div>
       <h2 class="sec-h"><span data-i="con.h">Trabajemos</span> <em><span data-i="con.h2">juntos</span></em></h2>
       <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:2rem" contenteditable data-i="con.d">¿Farmacéutico, director de hospital o distribuidor en la RD? Construyamos su solución a medida.</p>
-      <div class="ci-row"><span class="ci-l">Email</span><span class="ci-v" contenteditable>contacto@atlantic-nb.com</span></div>
+      <div class="ci-row"><span class="ci-l">Email</span><span class="ci-v" contenteditable>contact@atlanticnb.com</span></div>
       <div class="ci-row"><span class="ci-l">Tel</span><span class="ci-v" contenteditable>+1 (809) XXX-XXXX</span></div>
       <div class="ci-row"><span class="ci-l" data-i="con.sede">Sede</span><span class="ci-v" contenteditable>Santiago de los Caballeros, Rep. Dom.</span></div>
       <div class="ci-row"><span class="ci-l">RNC</span><span class="ci-v">1-33-63114-8</span></div>
@@ -485,6 +522,20 @@ footer ul a:hover{color:var(--gold)}
 </footer>
 
 <script>
+// ══ PROTECTION contenteditable — empêche l'effacement total ══
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[contenteditable]').forEach(function(el) {
+    var original = el.innerHTML;
+    el.addEventListener('blur', function() {
+      if(el.innerHTML.trim() === '' || el.innerHTML.trim() === '<br>') {
+        el.innerHTML = original;
+      } else {
+        original = el.innerHTML;
+      }
+    });
+  });
+});
+
 // ══ TOGGLE — exactement comme le widget qui marchait ══
 var isDark = true;
 
@@ -526,9 +577,9 @@ function toggleMode() {
 // ══ I18N ══
 var T = {
   es: {
-    'nav.tr':'Transporte','nav.co':'Cobertura','nav.sv':'Servicios','nav.cl':'Clientes','nav.ai':'Asistente IA','nav.ct':'Contacto',
-    'h.tag':'Importación farmacéutica · República Dominicana','h.a':'Su socio','h.b':'farmacéutico','h.c':'de confianza en RD',
-    'h.body':'Atlantic N&B Food & Health importa y distribuye medicamentos certificados desde Europa hacia la República Dominicana — vía aérea y marítima, con cadena de frío GDP y cumplimiento SESPAS/CAASD.',
+    'about.l':'[ 00 ] — El Proyecto','about.h':'Una nueva ruta comercial entre dos continentes','about.p1':'El proyecto ATLANTIC nace de una visión: crear una ruta comercial directa entre África y América Latina, con la República Dominicana como base estratégica y logística.','about.p2':'Nuestro socio africano, líder farmacéutico, garantiza un suministro continuo y competitivo para el Caribe y América Latina.','about.r1l':'Ruta comercial','about.r1v':'África → República Dominicana → Caribe & América Latina','about.r2l':'Producto estratégico','about.r2v':'Insulina y medicamentos esenciales — acceso continuo para todos','about.r3l':'Visión','about.r3v':'"La salud para todos" — alianzas equitativas entre países emergentes','nav.tr':'Transporte','nav.co':'Cobertura','nav.sv':'Servicios','nav.cl':'Clientes','nav.ai':'Asistente IA','nav.login':'Acceso','nav.ct':'Contacto',
+    'h.tag':'Importación farmacéutica · República Dominicana','h.a':'Proyecto','h.b':'ATLANTIC','h.c':'La salud para todos',
+    'h.body':'Atlantic N&B es el eslabón estratégico de un proyecto histórico: la creación de una nueva ruta comercial entre África y América Latina, con base en la República Dominicana. Medicamentos de primera calidad, accesibles para todos — \"La salud para todos\" es nuestra misión.',
     'h.b1':'Ver cobertura RD','h.b2':'Asistente IA',
     's1l':'Referencias farmacéuticas','s1n':'Homologadas CAASD/SESPAS','s2l':'Plazo aéreo','s2n':'Europa → Santo Domingo',
     's3l':'Modos de transporte','s3n':'Aéreo express + Marítimo','s4l':'Cadena de frío','s4n':'Certificada de extremo a extremo',
@@ -540,7 +591,7 @@ var T = {
     'map.l':'Cobertura','map.h':'República Dominicana —','map.h2':'nuestra zona de operación','map.d':'Operamos desde Santiago hacia todo el territorio dominicano.',
     'map.net':'Red de distribución','map.ci':'Ciudades','map.op':'operativas','inf.air':'Aéreo','inf.sea':'Marítimo','pill.ok':'Activo','pill.soon':'En curso',
     'svc.l':'Servicios','svc.h':'Nuestra','svc.h2':'experiencia',
-    's1.t':'Importación farmacéutica','s1.d':'Medicamentos conformes ANSM, FDA y autoridades dominicanas. Expedientes CAASD/SESPAS pre-constituidos.',
+    's1.t':'Importación farmacéutica','s1.d':'Medicamentos de producción africana certificados, conformes con las autoridades dominicanas. Expedientes CAASD/SESPAS pre-constituidos por lote.',
     's2.t':'Cumplimiento regulatorio RD','s2.d':'Coordinación SESPAS, CAASD y SISALRIL. Registro, despacho y homologaciones.',
     's3.t':'Cadena de frío certificada','s3.d':'Monitoreo 2°C–8°C y −20°C. GDP garantizado.','s4.t':'Importación alimentaria','s4.d':'Próxima extensión hacia productos alimentarios.','soon':'Próximamente',
     'pro.l':'Clientes','pro.h':'Su solución,','pro.h2':'a medida',
@@ -561,9 +612,9 @@ var T = {
     'ft.co':'Empresa','ft.c1':'Quiénes somos','ft.c2':'Contacto','ft.c3':'Aviso legal',
   },
   fr: {
-    'nav.tr':'Transport','nav.co':'Couverture','nav.sv':'Services','nav.cl':'Clients','nav.ai':'Assistant IA','nav.ct':'Contact',
-    'h.tag':'Import pharmaceutique · République Dominicaine','h.a':'Votre partenaire','h.b':'pharmaceutique','h.c':'de confiance en RD',
-    'h.body':'Atlantic N&B Food & Health importe et distribue des médicaments certifiés depuis l’Europe vers la République Dominicaine — par voie aérienne et maritime, avec chaîne du froid GDP.',
+    'about.l':'[ 00 ] — Le Projet','about.h':'Une nouvelle route commerciale entre deux continents','about.p1':'Le projet ATLANTIC est né d’une vision : créer une route commerciale directe entre l’Afrique et l’Amérique Latine, avec la République Dominicaine comme base stratégique.','about.p2':'Notre partenaire africain, leader pharmaceutique, garantit un approvisionnement continu et compétitif pour les Caraïbes et l’Amérique Latine.','about.r1l':'Route commerciale','about.r1v':'Afrique → République Dominicaine → Caraïbes & Amérique Latine','about.r2l':'Produit stratégique','about.r2v':'Insuline et médicaments essentiels — accès continu pour tous','about.r3l':'Vision','about.r3v':'"La santé pour tous" — alliances équitables entre pays émergents','nav.tr':'Transport','nav.co':'Couverture','nav.sv':'Services','nav.cl':'Clients','nav.ai':'Assistant IA','nav.login':'Accès','nav.login':'Login','nav.ct':'Contact',
+    'h.tag':'Import pharmaceutique · République Dominicaine','h.a':'Projet','h.b':'ATLANTIC','h.c':'La santé pour tous',
+    'h.body':'Atlantic N&B est le maillon stratégique d’un projet historique : la création d’une nouvelle route commerciale entre l’Afrique et l’Amérique Latine, avec base en République Dominicaine. Des médicaments de première qualité, accessibles à tous — \"La santé pour tous\" est notre mission.',
     'h.b1':'Voir la couverture RD','h.b2':'Assistant IA',
     's1l':'Références pharmaceutiques','s1n':'Homologuées CAASD/SESPAS','s2l':'Délai aérien','s2n':'Europe → Santo Domingo',
     's3l':'Modes de transport','s3n':'Aérien express + Maritime','s4l':'Chaîne du froid','s4n':'Certifiée de bout en bout',
@@ -595,9 +646,9 @@ var T = {
     'ft.co':'Entreprise','ft.c1':'À propos','ft.c2':'Contact','ft.c3':'Mentions légales',
   },
   en: {
-    'nav.tr':'Transport','nav.co':'Coverage','nav.sv':'Services','nav.cl':'Clients','nav.ai':'AI Assistant','nav.ct':'Contact',
-    'h.tag':'Pharmaceutical import · Dominican Republic','h.a':'Your trusted','h.b':'pharmaceutical','h.c':'partner in DR',
-    'h.body':'Atlantic N&B Food & Health imports and distributes certified medicines from Europe to the Dominican Republic — by air and sea, with GDP cold chain.',
+    'nav.tr':'Transport','nav.co':'Coverage','nav.sv':'Services','nav.cl':'Clients','nav.ai':'AI Assistant','nav.login':'Accès','nav.login':'Login','nav.ct':'Contact',
+    'h.tag':'Pharmaceutical import · Dominican Republic','h.a':'Project','h.b':'ATLANTIC','h.c':'Health for everyone',
+    'h.body':'Atlantic N&B is the strategic link of a historic project: building a new trade route between Africa and Latin America, with the Dominican Republic as its hub. First-quality medicines, accessible to all — \"Health for everyone\" is our mission.',
     'h.b1':'See DR coverage','h.b2':'AI Assistant',
     's1l':'Pharmaceutical references','s1n':'CAASD/SESPAS approved','s2l':'Air transit','s2n':'Europe → Santo Domingo',
     's3l':'Transport modes','s3n':'Air express + Maritime','s4l':'Cold chain','s4n':'Certified end-to-end',
