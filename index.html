@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Atlantic N&B Food & Health — República Dominicana</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=Rockwell+Nova:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=Arvo:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -74,8 +74,17 @@ body.light .tog-k{transform:translateX(20px)}
 .tag-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.6s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 .hero h1{font-family:'Playfair Display';font-size:clamp(2.6rem,4.2vw,4rem);font-weight:400;line-height:1.08;margin-bottom:1.4rem;color:var(--text)}
-.hero h1 .rockwell{font-family:'Rockwell Nova','Rockwell','Georgia',serif;font-weight:700;font-style:normal;color:var(--gold);letter-spacing:.02em}
-.hero h1 em{font-style:italic;color:var(--gold)}
+.hero h1 .rockwell{
+  font-family:'Rockwell Nova','Rockwell','Arvo',Georgia,serif !important;
+  font-weight:700 !important;
+  font-style:normal !important;
+  color:var(--gold) !important;
+  letter-spacing:.02em !important;
+  font-size:clamp(3rem,5.5vw,5.5rem) !important;
+  display:block;
+  line-height:1;
+}
+.hero h1 em{font-style:italic;color:var(--gold)} .hero h1 .rockwell{font-family:'Rockwell Nova','Rockwell','Arvo',Georgia,serif !important;font-weight:700 !important;font-style:normal !important;color:var(--gold) !important;letter-spacing:.02em !important;font-size:clamp(3rem,5.5vw,5.5rem) !important;display:block;line-height:1.05}
 .hero-body{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:2.2rem;max-width:520px}
 .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1.5rem}
 .btn-p{background:var(--gold);color:var(--bg);border:none;padding:.9rem 2.2rem;font-family:'Syne';font-size:13px;font-weight:700;letter-spacing:.06em;cursor:pointer;min-height:44px}
@@ -441,7 +450,7 @@ footer ul a:hover{color:var(--gold)}
   <div class="hero-in">
     <div>
       <div class="hero-tag"><div class="tag-dot"></div><span data-i="h.tag">Importación farmacéutica · República Dominicana</span></div>
-      <h1><span data-i="h.a">Su socio</span> <em><span data-i="h.b">farmacéutico</span></em><br><span data-i="h.c">de confianza en RD</span></h1>
+      <h1><span data-i="h.a">Projet</span><br><span class="rockwell" data-i="h.b">ATLANTIC</span><br><span data-i="h.c" style="font-size:clamp(1.4rem,2.5vw,2.2rem);font-weight:300;opacity:.8">La santé pour tous</span></h1>
       <p class="hero-body" data-i="h.body">Atlantic N&amp;B Food &amp; Health importa y distribuye medicamentos certificados desde Europa hacia la República Dominicana — vía aérea y marítima, con cadena de frío GDP y cumplimiento SESPAS/CAASD.</p>
       <div class="hero-btns">
         <button class="btn-p" onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})"><span data-i="h.b1">Ver cobertura RD</span></button>
